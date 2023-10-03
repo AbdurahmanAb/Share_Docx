@@ -17,7 +17,18 @@ class PostFactory extends Factory
     public function definition(): array
     {
         return [
+         'title'=>fake()->word(),
+         'body'=>[]
             //
         ];
+    }
+
+//to override the default titile value
+    public function SetTitle()
+    {
+    return     $this->state([
+            'title' => 'TestTitle'
+        ]);
+        # code...
     }
 }

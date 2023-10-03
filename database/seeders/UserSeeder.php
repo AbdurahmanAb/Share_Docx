@@ -2,25 +2,28 @@
 
 namespace Database\Seeders;
 
-use App\Models\Post;
-
 use Database\Seeders\Traits\DisableForeignKey;
 use Database\Seeders\Traits\EnableForeignKey;
 use Database\Seeders\Traits\TruncateTable;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class PostSeeder extends Seeder
+class UserSeeder extends Seeder
 {
-    use TruncateTable, EnableForeignKey, DisableForeignKey;
+    use TruncateTable;
+    use EnableForeignKey;
+    use DisableForeignKey;
     /**
      * Run the database seeds.
      */
     public function run(): void
     {
-        $this->DisableFk();
-        $this->truncate('posts');
-        Post::factory(5)->setTitle()->create();
-        $this->EnableFk();        //
+       $this->DisableFk();
+     $this->truncate('users');
+        //to remove repteation of data we truncate the table first
+        \App\Models\User::factory(10)->create();
+        //
+      $this->EnableFk();
     }
 }
