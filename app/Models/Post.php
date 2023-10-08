@@ -12,7 +12,10 @@ class Post extends Model
     protected $casts = [
         'body' => 'array'
     ];
-
+    protected $fillable = [
+'title',
+'body'
+    ];
  public function comments()
  {
       return  $this->hasMany(Comment::class, 'post_id');
