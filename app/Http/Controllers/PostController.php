@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Http\Resources\PostResource;
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -13,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::all();
+        return  PostResource::collection(Post::all());
         //
     }
 
@@ -22,22 +24,35 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-       return Post::create(
-            [
-                'title' => $request->title,
-                'body' => $request->body
-            ]
-        );
+       $result= DB::transaction(function () use ($request) {
+            $created = Post::create(
+                [
+                    'title' => $request->title,
+                    'body' => $request->body
+                ]
+            );
+            $created->users()->sync($request->user_ids);
 
-               //
+            return $created;
+        });
+
+        return new PostResource($result);
+        //
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Post $post)
+    public function show($id)
+
     {
-        return $post;
+        $post = Post::find($id);
+        if(!$post){
+        return response()->json([
+            'message'=>'post not found'
+        ],404);
+       }        return new PostResource($post);
         //
     }
 
@@ -46,17 +61,39 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $post->update(
-            ['title'=>$request->title?? $post->title]
+        // $updated = $request->only([
+        //     "title",
+        //     "body"
+        // ]);
+       $updated= $post->update(
+            ['title'=>$request->title?? $post->title,
+            'body'=>$request->body ?? $post->body
+            ]
         );
+        if(!$updated){
+            return response()->json(["message" => "Bad request"], 400);
+
+        }
+        return new PostResource($post);
+        // response()->json(['message'=> 'request updated'], 200);
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
+        $post = Post::find($id);
+        if (!$post) {
+            return response()->json(['message' => 'Post Not Found'], 404);
+        }
+    
+        // Delete the user.
+        $post->forceDelete();
+    
+        // Return a success response.
+        return response()->json(['message' => 'Post Deleted Successfully'], 200);
         //
     }
 }

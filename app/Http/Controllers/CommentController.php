@@ -13,6 +13,7 @@ class CommentController extends Controller
      */
     public function index()
     {
+        return Comment::all();
         //
     }
 
@@ -21,6 +22,9 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
+        Comment::create([
+         'body'=>$request->body
+        ]);
         //
     }
 
@@ -29,6 +33,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
+        return $comment;
         //
     }
 
@@ -37,14 +42,21 @@ class CommentController extends Controller
      */
     public function update(UpdateCommentRequest $request, Comment $comment)
     {
+        $comment->update([
+            'body'=>$request->body??$comment->body
+        ]);
         //
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Comment $comment)
+    public function destroy($id)
     {
+        $comment = Comment::find($id);
+        if(!$comment){
+            return response()->json(["message"=>"comment doesn't exist"],404);
+        }
         //
     }
 }

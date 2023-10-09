@@ -48,6 +48,10 @@ class UserController  extends Controller
      */
     public function update(UpdateUserRequest $request, User $User)
     {
+        $User->update([
+            'name'=>$request->name??$User->name,
+        'email'=>$request->email??$User->email,
+    'password'=>$request->password??$User->password        ]);
         //
     }
 
@@ -59,8 +63,9 @@ class UserController  extends Controller
         $User = User::find($id);
         if(!$User){
            // $User->delete();
-            abort(code: 404, message: "User Not Found");
-            //
+           // abort(code: 404, message: "User Not Found");
+            return response()->json(["message" => "User not found"],404); 
+           //
            // return User::all();
         }
         $User->delete();
