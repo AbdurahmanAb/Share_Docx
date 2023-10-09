@@ -46,6 +46,9 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
+        $post->update(
+            ['title'=>$request->title?? $post->title]
+        );
         //
     }
 
