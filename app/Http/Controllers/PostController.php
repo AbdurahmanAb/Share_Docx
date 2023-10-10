@@ -6,6 +6,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
@@ -13,9 +14,11 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        return  PostResource::collection(Post::all());
+        $pageSize = $request->page_size ?? 20;
+        $posts = Post::paginate($pageSize);
+        return  PostResource::collection($posts);
         //
     }
 

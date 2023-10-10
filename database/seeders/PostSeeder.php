@@ -21,7 +21,7 @@ class PostSeeder extends Seeder
     {
         $this->DisableFk();
         $this->truncate('posts');
-       $posts = Post::factory(5)->setTitle()->create();
+       $posts = Post::factory(200)->create();
         $posts->each(function (Post $post) {
             $post->users()->sync([FactoryHelper::getRandomId(User::class)]);
 
