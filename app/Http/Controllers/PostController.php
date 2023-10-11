@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\JsonException;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
@@ -16,8 +17,15 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $pageSize = $request->page_size ?? 20;
-        $posts = Post::paginate($pageSize);
+        try {
+            $pageSize = $request->page_size ?? 20;
+            $posts = Post::paginate($pageSize);
+            //code...
+        } catch (\Throwable $th) {
+            //throw $th;
+            throw new JsonException($th->getMessage(), 404);
+        }
+       
         return  PostResource::collection($posts);
         //
     }
@@ -27,7 +35,9 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-       $result= DB::transaction(function () use ($request) {
+      
+      try {
+        $result= DB::transaction(function () use ($request) {
             $created = Post::create(
                 [
                     'title' => $request->title,
@@ -35,9 +45,17 @@ class PostController extends Controller
                 ]
             );
             $created->users()->sync($request->user_ids);
-          
+         
+                
+        
             return $created;
         });
+        //code...
+      } catch (\Throwable $th) {
+        //throw $th;
+        throw new JsonException($th->getMessage(), 422);
+      }
+        
      
 
         return new PostResource($result);
@@ -51,12 +69,15 @@ class PostController extends Controller
     public function show($id)
 
     {
+        
         $post = Post::find($id);
-        if(!$post){
-        return response()->json([
-            'message'=>'post not found'
-        ],404);
-       }        return new PostResource($post);
+        throw_if(!$post, JsonException::class, 'Post Not Found',404);
+    //     if(!$post){
+    //     return response()->json([
+    //         'message'=>'post not found'
+    //     ],404);
+    //    }
+            return new PostResource($post);
         //
     }
 
@@ -64,22 +85,27 @@ class PostController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdatePostRequest $request, Post $post)
-    {
-        // $updated = $request->only([
-        //     "title",
-        //     "body"
-        // ]);
-       $updated= $post->update(
-            ['title'=>$request->title?? $post->title,
-            'body'=>$request->body ?? $post->body
-            ]
-        );
-        if(!$updated){
-            return response()->json(["message" => "Bad request"], 400);
+    { 
+        
+      
+        
 
-        }
-        return new PostResource($post);
-        // response()->json(['message'=> 'request updated'], 200);
+          
+           
+            $updated= $post->update(
+                ['title'=>$request->title??$post->title,
+                'body'=>$request->body??$post->body
+                ]
+            );
+            # code...
+        
+            # code...
+        //throw_if(!$updated);
+    
+     
+    
+        return 
+        response()->json(['message'=> 'request updated'], 200);
         //
     }
 
@@ -89,9 +115,10 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
-        if (!$post) {
-            return response()->json(['message' => 'Post Not Found'], 404);
-        }
+        throw_if(!$post, JsonException::class, 'Post Not Found', 404);
+        // if (!$post) {
+        //     return response()->json(['message' => 'Post Not Found'], 404);
+        // }
      
         // Delete the user.
         $post->forceDelete();
