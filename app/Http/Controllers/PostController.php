@@ -85,18 +85,17 @@ class PostController extends Controller
      * Update the specified resource in storage.
      */
     public function update(UpdatePostRequest $request, Post $post)
-    { 
-        
-      
-        
+    {
 
-          
-           
-            $updated= $post->update(
-                ['title'=>$request->title??$post->title,
-                'body'=>$request->body??$post->body
-                ]
-            );
+
+        throw_if(!$request->title && !$request->body, JsonException::class, "Bad Request",400);
+
+
+
+        $post->update([
+            'title' => $request->title??$post->title,
+            'body'=>$request->body??$post->body
+        ]);
             # code...
         
             # code...
