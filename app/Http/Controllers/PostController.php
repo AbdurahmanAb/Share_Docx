@@ -35,9 +35,10 @@ class PostController extends Controller
                 ]
             );
             $created->users()->sync($request->user_ids);
-
+          
             return $created;
         });
+     
 
         return new PostResource($result);
         //
