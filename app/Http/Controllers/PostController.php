@@ -91,7 +91,7 @@ class PostController extends Controller
         if (!$post) {
             return response()->json(['message' => 'Post Not Found'], 404);
         }
-    
+     
         // Delete the user.
         $post->forceDelete();
     
