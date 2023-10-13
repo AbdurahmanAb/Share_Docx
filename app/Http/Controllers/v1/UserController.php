@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\v1;
 
+use App\Events\User\UserCreated;
+use App\Exceptions\JsonException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 
 use App\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Support\Facades\Hash;
 
 class UserController  extends Controller
@@ -16,8 +19,10 @@ class UserController  extends Controller
      */
     public function index()
     {
+        
+        event(new UserCreated(User::factory()->make()));
         return User::all();
-        ;
+        
         //
     }
 
@@ -26,12 +31,19 @@ class UserController  extends Controller
      */
     public function store(StoreUserRequest $request)
     {
+       try {
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
     
+        //code...
+       } catch (\Throwable $th) {
+        //throw $th;
+        throw new JsonException("Missing Required Field",422);
+       }
+       
         return $request;
     }
 
@@ -40,6 +52,7 @@ class UserController  extends Controller
      */
     public function show(User $User)
     {
+        throw_if(!$User, JsonException::class , "User Not Found ",404);
         return $User;
         //
     }
