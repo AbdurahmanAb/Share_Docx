@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Database\Factories\UserFactory;
 use Illuminate\Support\Facades\Hash;
@@ -21,7 +22,7 @@ class UserController  extends Controller
     {
         
         event(new UserCreated(User::factory()->make()));
-        return User::all();
+        return  UserResource::collection(User::all());
         
         //
     }

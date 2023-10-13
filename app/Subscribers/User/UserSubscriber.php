@@ -7,7 +7,7 @@ use Illuminate\Events\Dispatcher;
 
 class UserSubscriber{
 
-public function subscriber(Dispatcher $events)
+public function subscribe(Dispatcher $events)
 {
         $events->listen(UserCreated::class, SendWelcomeMail::class);
 }
