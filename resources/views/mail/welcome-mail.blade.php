@@ -1,12 +1,7 @@
 @component('mail::message')
-    # Welcome To Share Docx
+    ## Hello
 
-    @component('mail::button', ['url' => 'fb.com'])
-        Verify Account
+    @component('vendor.mail.html.panel')
+        {{ config('app.name') }}
     @endcomponent
-    @component('mail::panel')
-        This is Panel
-    @endcomponent
-    @component('mail::footer')
-        This is a footer
-    @endcomponent
+@endcomponent

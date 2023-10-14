@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\v1;
 
+use App\Exceptions\JsonException;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 
 class CommentController extends Controller
@@ -14,7 +16,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        return Comment::all();
+        return CommentResource::collection(Comment::all());
         //
     }
 
@@ -23,17 +25,26 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        Comment::create([
-         'body'=>$request->body
-        ]);
+        try {
+            Comment::create([
+                'body'=>$request->body
+               ]);
+            //code...
+        } catch (\Throwable $th) {
+            //throw $th;
+            throw new JsonException($th->getMessage(),422);
+        }
+      
         //
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Comment $comment)
+    public function show($id)
     {
+        $comment = Comment::find($id);
+        throw_if(!$comment, JsonException::class, "Comment Not Found", 404);
         return $comment;
         //
     }
@@ -55,9 +66,11 @@ class CommentController extends Controller
     public function destroy($id)
     {
         $comment = Comment::find($id);
-        if(!$comment){
-            return response()->json(["message"=>"comment doesn't exist"],404);
-        }
+        throw_if(!$comment, JsonException::class, "Comment Not found", 404);
+            //return response()->json(["message"=>"comment doesn't exist"],404);
+        
+        $comment->delete();
+        return response()->json(['message' => 'comment Deleted']);
         //
     }
 }

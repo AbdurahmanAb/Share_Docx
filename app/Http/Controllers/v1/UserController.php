@@ -21,7 +21,7 @@ class UserController  extends Controller
     public function index()
     {
         
-        event(new UserCreated(User::factory()->make()));
+    
         return  UserResource::collection(User::all());
         
         //
@@ -38,11 +38,12 @@ class UserController  extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
+        event(new UserCreated($user));
     
         //code...
        } catch (\Throwable $th) {
         //throw $th;
-        throw new JsonException("Missing Required Field",422);
+        throw new JsonException($th->getMessage(),422);
        }
        
         return $request;
@@ -51,8 +52,9 @@ class UserController  extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $User)
+    public function show($id)
     {
+        $User = User::find($id);
         throw_if(!$User, JsonException::class , "User Not Found ",404);
         return $User;
         //
@@ -76,15 +78,9 @@ class UserController  extends Controller
     public function destroy($id)
     {
         $User = User::find($id);
-        if(!$User){
-           // $User->delete();
-           // abort(code: 404, message: "User Not Found");
-            return response()->json(["message" => "User not found"],404); 
-           //
-           // return User::all();
-        }
+        throw_if(!$User, JsonException::class, "User Not found", 404);
         $User->delete();
-        return User::all();
+        return response()->json(["Message"=>"user Deleted"]);
         
         // Delete the record.
     
