@@ -43,6 +43,7 @@ class CommentController extends Controller
      */
     public function show($id)
     {
+       
         $comment = Comment::find($id);
         throw_if(!$comment, JsonException::class, "Comment Not Found", 404);
         return $comment;
