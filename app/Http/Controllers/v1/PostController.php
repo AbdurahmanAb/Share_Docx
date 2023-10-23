@@ -89,12 +89,12 @@ class PostController extends Controller
 
 
 
-        $post->update([
+       $post->update([
             'title' => $request->title??$post->title,
             'body'=>$request->body??$post->body
         ]);
     
-        return response()->json(['message'=> 'request updated'], 200);
+        return $post;
         //
     }
 
