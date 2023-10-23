@@ -12,16 +12,13 @@ use Tests\TestCase;
 
 class PostTest extends Testcase
 {
-   //use RefreshDatabase; 
+   use RefreshDatabase; 
   
    
     /**
      * A basic unit test example.
      */
-    public function test_example(): void
-    {
-        $this->assertTrue(true);
-    }
+  
     public function test_create()
     {
         $controller = app(PostController::class);

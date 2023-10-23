@@ -26,14 +26,17 @@ class CommentController extends Controller
     public function store(StoreCommentRequest $request)
     {
         try {
-            Comment::create([
-                'body'=>$request->body
-               ]);
-            //code...
+           $comment = Comment::create([
+                'body'=>$request->body,
+                'user_id'=>$request->user_id,        
+    'post_id'=>$request->post_id        ]);
+            //code..
+          
         } catch (\Throwable $th) {
             //throw $th;
             throw new JsonException($th->getMessage(),422);
         }
+        return new CommentResource($comment);
       
         //
     }
@@ -57,7 +60,11 @@ class CommentController extends Controller
     {
         $comment->update([
             'body'=>$request->body??$comment->body
+           , 'user_id'=> $request->user_id??$comment->user_id,
+            'post_id'=> $request->post_id??$comment->post_id
         ]);
+
+        return $comment;
         //
     }
 
@@ -69,8 +76,8 @@ class CommentController extends Controller
         $comment = Comment::find($id);
         throw_if(!$comment, JsonException::class, "Comment Not found", 404);
             //return response()->json(["message"=>"comment doesn't exist"],404);
-        
-        $comment->delete();
+
+        $comment->forceDelete();
         return response()->json(['message' => 'comment Deleted']);
         //
     }

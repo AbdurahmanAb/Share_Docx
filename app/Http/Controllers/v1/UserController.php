@@ -70,6 +70,8 @@ class UserController  extends Controller
         'email'=>$request->email??$User->email,
     'password'=>$request->password??$User->password        ]);
         //
+
+        return $User;
     }
 
     /**
