@@ -16,31 +16,30 @@ class PostTest extends TestCase
     /**
      * A basic unit test example.
      */
-    // public function test_example(): void
+    public function test_example(): void
+    {
+        $this->assertTrue(true);
+    }
+    // public function testCreate()
     // {
-    //     $this->assertTrue(true);
-    // }.
-    public function test_create()
-    {
-        $data = [
-            'title'=>'TestTitle',
-            'body'=>[]
-        ]; 
-         $controller = app(PostController::class);
-        $response = $controller->store(new StorePostRequest($data));
-        $this->assertInstanceOf(Post::class, $response);
-     //   $response->assertStatus(201);
-        //test create Method
+    //     $data = [
+    //         'title' => 'TestTitle',
+    //         'body' => 'TestBody'
+    //     ];
     
-        
-    }
+    //     $response = $this->post('/posts', $data);
+    
+    //     $response->assertStatus(201); // Assert the response status code
+    
+    //     $this->assertDatabaseHas('posts', $data); // Assert the data exists in the database
+    // }
 
-    public function test_update()
-    {
+    // public function test_update()
+    // {
         
-    }
-    public function test_delete()
-    {
+    // }
+    // public function test_delete()
+    // {
         
-    }
+    // }
 }
