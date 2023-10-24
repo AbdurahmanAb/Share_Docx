@@ -23,8 +23,8 @@ class CommentFactory extends Factory
         
         return [
             'body'=>[],
-            'user_id'=>FactoryHelper::getRandomId(User::class),
-            'post_id'=>FactoryHelper::getRandomId(Post::class),
+            'user_id'=>User::factory(1)->create()->first()->id,
+            'post_id'=>Post::factory(1)->create()->first()->id,
             //
         ];
     }
