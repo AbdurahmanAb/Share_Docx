@@ -65,6 +65,7 @@ class UserController  extends Controller
      */
     public function update(UpdateUserRequest $request, User $User)
     {
+        throw_if(!$User->name || !$User->email || !$User->password, JsonException::class, "Request not fullfilled");
         $User->update([
             'name'=>$request->name??$User->name,
         'email'=>$request->email??$User->email,

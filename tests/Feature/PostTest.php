@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use App\Models\Post;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -19,17 +20,42 @@ class PostTest extends TestCase
 
         $response->assertStatus(200);
     }
-    public function testCreate()
+    public function test_create()
 {
     $data = [
         'title' => 'TestTitle 246532',
-        'body' => []
+        'body' => null
     ];
+    
 
     $response = $this->post('/api/v1/post', $data);
 
     $response->assertStatus(201); // Assert the response status code
 
- //   $this->assertDatabaseHas('posts', $data); // Assert the data exists in the database
+   $this->assertDatabaseHas('posts', $data); // Assert the data exists in the database
 }
+
+
+public function test_update()
+    {
+        $post = Post::factory(1)->create()->first();
+        $data = [
+            "title" => "This is my nigga's Second title"
+        ];
+       $response =  $this->patch("/api/v1/post/$post->id",$data);
+        $response->assertStatus(200);
+        $this->assertDatabaseHas('posts', [
+            'id'=>$post->id,
+            'title' => $data['title']
+        ]);
+
+    }
+ public function test_delete()
+ {
+        $post = Post::factory(1)->create()->first();
+        $response = $this->delete("/api/v1/post/$post->id");
+        $response->assertStatus(200);
+        $this->assertDatabaseMissing('posts',$post->toArray());
+    }
+
 }

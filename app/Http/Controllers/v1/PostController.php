@@ -94,7 +94,7 @@ class PostController extends Controller
             'body'=>$request->body??$post->body
         ]);
     
-        return $post;
+       return  $post;
         //
     }
 
