@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
@@ -24,7 +25,8 @@ class PostTest extends TestCase
 {
     $data = [
         'title' => 'TestTitle 246532',
-        'body' => null
+        'body' => 'Post Testing',
+        'user_id'=>  User::factory()->count(2)->create()->pluck('id')->toArray(),
     ];
     
 
@@ -32,7 +34,7 @@ class PostTest extends TestCase
 
     $response->assertStatus(201); // Assert the response status code
 
-   $this->assertDatabaseHas('posts', $data); // Assert the data exists in the database
+    $this->assertDatabaseHas('posts', $data); // Assert the data exists in the database
 }
 
 

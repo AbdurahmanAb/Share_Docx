@@ -38,23 +38,20 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-      try {
-        $result= DB::transaction(function () use ($request) {
+
+        $result = DB::transaction(function () use ($request) {
             $created = Post::create(
                 [
                     'title' => $request->title,
-                    'body' => $request->body
+                    'body' => $request->body,
+                    'user_id'=>$request->user_id
                 ]
             );
-            $created->users()->sync($request->user_ids);
-
-            return $created;
+            $created->users()->sync($request->user_id);
+return $created;
+            
         });
-        //code...
-      } catch (\Throwable $th) {
-        //throw $th;
-        throw new JsonException($th->getMessage(), 422);
-      }
+      
     return new PostResource($result);
         //
 

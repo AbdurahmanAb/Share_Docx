@@ -7,6 +7,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -25,7 +26,8 @@ class PostTest extends Testcase
 
         $data = [
             'title' => 'TestTitle',
-            'body' => []
+            'body' => [],
+            'user_ids'=>[User::factory(1)->create()->first()->id]
         ];
     
         $response = $controller->store(new StorePostRequest(  $data));

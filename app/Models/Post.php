@@ -10,11 +10,13 @@ class Post extends Model
     use HasFactory;
 
     protected $casts = [
-        'body' => 'array'
+        'body' => 'array',
+        //'user_ids'=>'array'
     ];
     protected $fillable = [
 'title',
-'body'
+'body',
+
     ];
  public function comments()
  {
