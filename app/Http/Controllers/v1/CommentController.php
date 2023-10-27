@@ -9,6 +9,11 @@ use App\Http\Requests\UpdateCommentRequest;
 use App\Http\Resources\CommentResource;
 use App\Models\Comment;
 
+/**
+ * Summary of CommentController
+ * @group Comment Management
+   * API To Manage Comments
+ */
 class CommentController extends Controller
 {
     /**

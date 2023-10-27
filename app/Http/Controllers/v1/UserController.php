@@ -11,18 +11,25 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use Database\Factories\UserFactory;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+/**
+ * @group User Management
+ *  API to Manage Users
+  **/
 class UserController  extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of User.
+     * @queryParam page_size int required  
      */
-    public function index()
+    public function index(Request $request)
     {
-        
-    
-        return  UserResource::collection(User::all());
+     $pageSize = $request->page_size??7;
+        $response = User::paginate($pageSize);
+
+        return  UserResource::collection($response);
         
         //
     }

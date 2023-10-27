@@ -11,6 +11,12 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
+
+/**
+ * @group Post Management
+ *  API to Manage Users
+  **/
+
 class PostController extends Controller
 {
 

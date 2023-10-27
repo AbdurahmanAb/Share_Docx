@@ -1,0 +1,1028 @@
+openapi: 3.0.3
+info:
+  title: Share_Docx
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost'
+paths:
+  /api/v1/comment:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      body: []
+                      user_id: 11
+                      post_id: 201
+                    -
+                      id: 2
+                      body: []
+                      user_id: 12
+                      post_id: 202
+                    -
+                      id: 3
+                      body: []
+                      user_id: 13
+                      post_id: 203
+                    -
+                      id: 4
+                      body: []
+                      user_id: 14
+                      post_id: 204
+                    -
+                      id: 5
+                      body: []
+                      user_id: 15
+                      post_id: 205
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        body: []
+                        user_id: 11
+                        post_id: 201
+                      -
+                        id: 2
+                        body: []
+                        user_id: 12
+                        post_id: 202
+                      -
+                        id: 3
+                        body: []
+                        user_id: 13
+                        post_id: 203
+                      -
+                        id: 4
+                        body: []
+                        user_id: 14
+                        post_id: 204
+                      -
+                        id: 5
+                        body: []
+                        user_id: 15
+                        post_id: 205
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        body:
+                          type: array
+                          example: []
+                        user_id:
+                          type: integer
+                          example: 11
+                        post_id:
+                          type: integer
+                          example: 201
+      tags:
+        - 'Comment Management'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Comment Management'
+      security: []
+  '/api/v1/comment/{comment}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  body: []
+                  user_id: 11
+                  post_id: 201
+                  created_at: '2023-10-25T15:23:35.000000Z'
+                  updated_at: '2023-10-25T15:23:35.000000Z'
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  body:
+                    type: array
+                    example: []
+                  user_id:
+                    type: integer
+                    example: 11
+                  post_id:
+                    type: integer
+                    example: 201
+                  created_at:
+                    type: string
+                    example: '2023-10-25T15:23:35.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2023-10-25T15:23:35.000000Z'
+      tags:
+        - 'Comment Management'
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Comment Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: comment
+        description: 'The comment.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/comment/{comment_id}':
+    patch:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Comment Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: comment_id
+        description: 'The ID of the comment.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/post:
+    get:
+      summary: 'Display a listing of the resource.'
+      operationId: displayAListingOfTheResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      title: ut
+                      body: 'Dolores itaque id doloremque distinctio. Adipisci unde eum enim. Dolorum earum voluptatum sed. Et dolore consequatur blanditiis quidem. Commodi consequatur tempore suscipit est et enim nisi impedit.'
+                      created_at: '2023-10-25T15:23:14.000000Z'
+                      updated_at: '2023-10-25T15:23:14.000000Z'
+                    -
+                      id: 2
+                      title: enim
+                      body: 'Modi ut ea voluptas qui. Quod non culpa nihil a. In temporibus illum expedita est eos repellat enim.'
+                      created_at: '2023-10-25T15:23:14.000000Z'
+                      updated_at: '2023-10-25T15:23:14.000000Z'
+                    -
+                      id: 3
+                      title: tenetur
+                      body: 'Sed dolorum sed vitae nisi quaerat. Et nulla fugiat vitae vel molestias qui est. Consectetur adipisci asperiores et et. Hic ab vero placeat perferendis quasi quam.'
+                      created_at: '2023-10-25T15:23:14.000000Z'
+                      updated_at: '2023-10-25T15:23:14.000000Z'
+                    -
+                      id: 4
+                      title: nihil
+                      body: 'Et id et officiis laudantium molestiae voluptas laborum est. Cum et et ex ut ullam dicta. Beatae et ut necessitatibus quo cumque.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 5
+                      title: excepturi
+                      body: 'Fuga id vero laudantium labore. Aspernatur consequatur cumque nesciunt non. Ratione officiis blanditiis veritatis voluptatem. Illum velit aliquam est qui iure ea.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 6
+                      title: porro
+                      body: 'Consectetur ex fuga neque doloremque est. Natus est voluptas laboriosam quae. Quia harum modi in voluptatem enim officia. Dolores id consequuntur fugit. Qui dolores suscipit autem.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 7
+                      title: voluptatem
+                      body: 'Molestiae sunt consequuntur iure atque qui. Architecto hic aperiam exercitationem.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 8
+                      title: voluptatibus
+                      body: 'Voluptates porro totam consequatur sunt. Quia nam harum aut est et ut illo. Officia quod quod voluptatem rerum id praesentium necessitatibus.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 9
+                      title: soluta
+                      body: 'Vel repellendus sit dolor quos non eos est et. Quibusdam sit aliquid aliquam nisi et ut repudiandae. Et ut corrupti voluptatibus.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 10
+                      title: minima
+                      body: 'Fugiat officiis voluptate est aperiam velit ut numquam. Cum ipsum molestias illum mollitia. Non maiores sed esse. Quis necessitatibus ut dicta in voluptate.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 11
+                      title: exercitationem
+                      body: 'Rerum nulla quod dolorem voluptas. Ratione velit velit quia repellat.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 12
+                      title: non
+                      body: 'In omnis reprehenderit aut maiores. Incidunt temporibus illum odio. Est quis tempora quia qui veniam ab hic non.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 13
+                      title: eius
+                      body: 'Ullam non qui sequi quod quo adipisci corrupti. Explicabo aut at aspernatur aliquam rerum. Tempora cum quia incidunt molestiae et.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 14
+                      title: voluptatibus
+                      body: 'In autem assumenda ipsam minus quaerat. Id ut perspiciatis ut quo quia atque quis. Ab voluptas ad repudiandae magni. Quaerat nihil quia tempora qui. Velit dignissimos illum qui.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 15
+                      title: earum
+                      body: 'Sed sequi accusantium qui inventore sint aut. Quia ratione dolores tempora qui sint. Occaecati illo pariatur dignissimos odio eaque nobis odio.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 16
+                      title: eaque
+                      body: 'Ea eligendi provident qui inventore. Corporis dicta et unde voluptas. Illum ut explicabo et consectetur rerum. Dolorem voluptatum minima delectus et.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 17
+                      title: vitae
+                      body: 'Sint non amet asperiores a. Dolore et ipsa magnam neque. Reiciendis animi libero vel. Alias ut doloribus corporis voluptatum et. Est reiciendis illo voluptas inventore rerum velit.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 18
+                      title: velit
+                      body: 'Dicta aut voluptatem magnam est error nesciunt dolorem. Expedita aperiam tenetur sed est at sed quo. Fugiat atque ut velit occaecati impedit eveniet. Est sequi voluptates qui porro in.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 19
+                      title: tempora
+                      body: 'Sint sunt omnis voluptate hic quos. Nesciunt placeat soluta eaque porro sint. Aut sint id ex incidunt.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                    -
+                      id: 20
+                      title: voluptatibus
+                      body: 'Animi atque vel dolorem enim repellendus at reprehenderit. Atque nam fugiat sunt corporis qui recusandae. Non rerum est suscipit et fugit illo sed modi.'
+                      created_at: '2023-10-25T15:23:15.000000Z'
+                      updated_at: '2023-10-25T15:23:15.000000Z'
+                  links:
+                    first: 'http://localhost/api/v1/post?page=1'
+                    last: 'http://localhost/api/v1/post?page=11'
+                    prev: null
+                    next: 'http://localhost/api/v1/post?page=2'
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 11
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: 'http://localhost/api/v1/post?page=2'
+                        label: '2'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=3'
+                        label: '3'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=4'
+                        label: '4'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=5'
+                        label: '5'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=6'
+                        label: '6'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=7'
+                        label: '7'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=8'
+                        label: '8'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=9'
+                        label: '9'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=10'
+                        label: '10'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=11'
+                        label: '11'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/post?page=2'
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost/api/v1/post'
+                    per_page: 20
+                    to: 20
+                    total: 205
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        title: ut
+                        body: 'Dolores itaque id doloremque distinctio. Adipisci unde eum enim. Dolorum earum voluptatum sed. Et dolore consequatur blanditiis quidem. Commodi consequatur tempore suscipit est et enim nisi impedit.'
+                        created_at: '2023-10-25T15:23:14.000000Z'
+                        updated_at: '2023-10-25T15:23:14.000000Z'
+                      -
+                        id: 2
+                        title: enim
+                        body: 'Modi ut ea voluptas qui. Quod non culpa nihil a. In temporibus illum expedita est eos repellat enim.'
+                        created_at: '2023-10-25T15:23:14.000000Z'
+                        updated_at: '2023-10-25T15:23:14.000000Z'
+                      -
+                        id: 3
+                        title: tenetur
+                        body: 'Sed dolorum sed vitae nisi quaerat. Et nulla fugiat vitae vel molestias qui est. Consectetur adipisci asperiores et et. Hic ab vero placeat perferendis quasi quam.'
+                        created_at: '2023-10-25T15:23:14.000000Z'
+                        updated_at: '2023-10-25T15:23:14.000000Z'
+                      -
+                        id: 4
+                        title: nihil
+                        body: 'Et id et officiis laudantium molestiae voluptas laborum est. Cum et et ex ut ullam dicta. Beatae et ut necessitatibus quo cumque.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 5
+                        title: excepturi
+                        body: 'Fuga id vero laudantium labore. Aspernatur consequatur cumque nesciunt non. Ratione officiis blanditiis veritatis voluptatem. Illum velit aliquam est qui iure ea.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 6
+                        title: porro
+                        body: 'Consectetur ex fuga neque doloremque est. Natus est voluptas laboriosam quae. Quia harum modi in voluptatem enim officia. Dolores id consequuntur fugit. Qui dolores suscipit autem.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 7
+                        title: voluptatem
+                        body: 'Molestiae sunt consequuntur iure atque qui. Architecto hic aperiam exercitationem.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 8
+                        title: voluptatibus
+                        body: 'Voluptates porro totam consequatur sunt. Quia nam harum aut est et ut illo. Officia quod quod voluptatem rerum id praesentium necessitatibus.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 9
+                        title: soluta
+                        body: 'Vel repellendus sit dolor quos non eos est et. Quibusdam sit aliquid aliquam nisi et ut repudiandae. Et ut corrupti voluptatibus.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 10
+                        title: minima
+                        body: 'Fugiat officiis voluptate est aperiam velit ut numquam. Cum ipsum molestias illum mollitia. Non maiores sed esse. Quis necessitatibus ut dicta in voluptate.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 11
+                        title: exercitationem
+                        body: 'Rerum nulla quod dolorem voluptas. Ratione velit velit quia repellat.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 12
+                        title: non
+                        body: 'In omnis reprehenderit aut maiores. Incidunt temporibus illum odio. Est quis tempora quia qui veniam ab hic non.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 13
+                        title: eius
+                        body: 'Ullam non qui sequi quod quo adipisci corrupti. Explicabo aut at aspernatur aliquam rerum. Tempora cum quia incidunt molestiae et.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 14
+                        title: voluptatibus
+                        body: 'In autem assumenda ipsam minus quaerat. Id ut perspiciatis ut quo quia atque quis. Ab voluptas ad repudiandae magni. Quaerat nihil quia tempora qui. Velit dignissimos illum qui.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 15
+                        title: earum
+                        body: 'Sed sequi accusantium qui inventore sint aut. Quia ratione dolores tempora qui sint. Occaecati illo pariatur dignissimos odio eaque nobis odio.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 16
+                        title: eaque
+                        body: 'Ea eligendi provident qui inventore. Corporis dicta et unde voluptas. Illum ut explicabo et consectetur rerum. Dolorem voluptatum minima delectus et.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 17
+                        title: vitae
+                        body: 'Sint non amet asperiores a. Dolore et ipsa magnam neque. Reiciendis animi libero vel. Alias ut doloribus corporis voluptatum et. Est reiciendis illo voluptas inventore rerum velit.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 18
+                        title: velit
+                        body: 'Dicta aut voluptatem magnam est error nesciunt dolorem. Expedita aperiam tenetur sed est at sed quo. Fugiat atque ut velit occaecati impedit eveniet. Est sequi voluptates qui porro in.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 19
+                        title: tempora
+                        body: 'Sint sunt omnis voluptate hic quos. Nesciunt placeat soluta eaque porro sint. Aut sint id ex incidunt.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                      -
+                        id: 20
+                        title: voluptatibus
+                        body: 'Animi atque vel dolorem enim repellendus at reprehenderit. Atque nam fugiat sunt corporis qui recusandae. Non rerum est suscipit et fugit illo sed modi.'
+                        created_at: '2023-10-25T15:23:15.000000Z'
+                        updated_at: '2023-10-25T15:23:15.000000Z'
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        title:
+                          type: string
+                          example: ut
+                        body:
+                          type: string
+                          example: 'Dolores itaque id doloremque distinctio. Adipisci unde eum enim. Dolorum earum voluptatum sed. Et dolore consequatur blanditiis quidem. Commodi consequatur tempore suscipit est et enim nisi impedit.'
+                        created_at:
+                          type: string
+                          example: '2023-10-25T15:23:14.000000Z'
+                        updated_at:
+                          type: string
+                          example: '2023-10-25T15:23:14.000000Z'
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://localhost/api/v1/post?page=1'
+                      last:
+                        type: string
+                        example: 'http://localhost/api/v1/post?page=11'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: 'http://localhost/api/v1/post?page=2'
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 11
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: 'http://localhost/api/v1/post?page=2'
+                            label: '2'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=3'
+                            label: '3'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=4'
+                            label: '4'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=5'
+                            label: '5'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=6'
+                            label: '6'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=7'
+                            label: '7'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=8'
+                            label: '8'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=9'
+                            label: '9'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=10'
+                            label: '10'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=11'
+                            label: '11'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/post?page=2'
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://localhost/api/v1/post'
+                      per_page:
+                        type: integer
+                        example: 20
+                      to:
+                        type: integer
+                        example: 20
+                      total:
+                        type: integer
+                        example: 205
+      tags:
+        - 'Post Management'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Post Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title:
+                  type: string
+                  description: ''
+                  example: officia
+                body:
+                  type: string
+                  description: ''
+                  example: officiis
+                user_id:
+                  type: object
+                  description: ''
+                  example: []
+                  properties: {  }
+              required:
+                - title
+                - body
+                - user_id
+      security: []
+  '/api/v1/post/{post}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    title: ut
+                    body: 'Dolores itaque id doloremque distinctio. Adipisci unde eum enim. Dolorum earum voluptatum sed. Et dolore consequatur blanditiis quidem. Commodi consequatur tempore suscipit est et enim nisi impedit.'
+                    created_at: '2023-10-25T15:23:14.000000Z'
+                    updated_at: '2023-10-25T15:23:14.000000Z'
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      title:
+                        type: string
+                        example: ut
+                      body:
+                        type: string
+                        example: 'Dolores itaque id doloremque distinctio. Adipisci unde eum enim. Dolorum earum voluptatum sed. Et dolore consequatur blanditiis quidem. Commodi consequatur tempore suscipit est et enim nisi impedit.'
+                      created_at:
+                        type: string
+                        example: '2023-10-25T15:23:14.000000Z'
+                      updated_at:
+                        type: string
+                        example: '2023-10-25T15:23:14.000000Z'
+      tags:
+        - 'Post Management'
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Post Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: post
+        description: 'The post.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/v1/post/{post_id}':
+    patch:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'Post Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: post_id
+        description: 'The ID of the post.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/v1/user:
+    get:
+      summary: 'Display a listing of User.'
+      operationId: displayAListingOfUser
+      description: ''
+      parameters:
+        -
+          in: query
+          name: page_size
+          description: ''
+          example: 3
+          required: true
+          schema:
+            type: integer
+            description: ''
+            example: 3
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    -
+                      id: 1
+                      name: 'Mr. Norbert Treutel'
+                      email: soledad54@example.com
+                    -
+                      id: 2
+                      name: 'Berneice Hoeger'
+                      email: adela.mitchell@example.net
+                    -
+                      id: 3
+                      name: 'Ms. Zella Moore'
+                      email: sister.welch@example.org
+                  links:
+                    first: 'http://localhost/api/v1/user?page=1'
+                    last: 'http://localhost/api/v1/user?page=5'
+                    prev: null
+                    next: 'http://localhost/api/v1/user?page=2'
+                  meta:
+                    current_page: 1
+                    from: 1
+                    last_page: 5
+                    links:
+                      -
+                        url: null
+                        label: '&laquo; Previous'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/user?page=1'
+                        label: '1'
+                        active: true
+                      -
+                        url: 'http://localhost/api/v1/user?page=2'
+                        label: '2'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/user?page=3'
+                        label: '3'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/user?page=4'
+                        label: '4'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/user?page=5'
+                        label: '5'
+                        active: false
+                      -
+                        url: 'http://localhost/api/v1/user?page=2'
+                        label: 'Next &raquo;'
+                        active: false
+                    path: 'http://localhost/api/v1/user'
+                    per_page: 3
+                    to: 3
+                    total: 15
+                properties:
+                  data:
+                    type: array
+                    example:
+                      -
+                        id: 1
+                        name: 'Mr. Norbert Treutel'
+                        email: soledad54@example.com
+                      -
+                        id: 2
+                        name: 'Berneice Hoeger'
+                        email: adela.mitchell@example.net
+                      -
+                        id: 3
+                        name: 'Ms. Zella Moore'
+                        email: sister.welch@example.org
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 1
+                        name:
+                          type: string
+                          example: 'Mr. Norbert Treutel'
+                        email:
+                          type: string
+                          example: soledad54@example.com
+                  links:
+                    type: object
+                    properties:
+                      first:
+                        type: string
+                        example: 'http://localhost/api/v1/user?page=1'
+                      last:
+                        type: string
+                        example: 'http://localhost/api/v1/user?page=5'
+                      prev:
+                        type: string
+                        example: null
+                      next:
+                        type: string
+                        example: 'http://localhost/api/v1/user?page=2'
+                  meta:
+                    type: object
+                    properties:
+                      current_page:
+                        type: integer
+                        example: 1
+                      from:
+                        type: integer
+                        example: 1
+                      last_page:
+                        type: integer
+                        example: 5
+                      links:
+                        type: array
+                        example:
+                          -
+                            url: null
+                            label: '&laquo; Previous'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/user?page=1'
+                            label: '1'
+                            active: true
+                          -
+                            url: 'http://localhost/api/v1/user?page=2'
+                            label: '2'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/user?page=3'
+                            label: '3'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/user?page=4'
+                            label: '4'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/user?page=5'
+                            label: '5'
+                            active: false
+                          -
+                            url: 'http://localhost/api/v1/user?page=2'
+                            label: 'Next &raquo;'
+                            active: false
+                        items:
+                          type: object
+                          properties:
+                            url:
+                              type: string
+                              example: null
+                            label:
+                              type: string
+                              example: '&laquo; Previous'
+                            active:
+                              type: boolean
+                              example: false
+                      path:
+                        type: string
+                        example: 'http://localhost/api/v1/user'
+                      per_page:
+                        type: integer
+                        example: 3
+                      to:
+                        type: integer
+                        example: 3
+                      total:
+                        type: integer
+                        example: 15
+      tags:
+        - 'User Management'
+      security: []
+    post:
+      summary: 'Store a newly created resource in storage.'
+      operationId: storeANewlyCreatedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Management'
+      security: []
+  '/api/v1/user/{User}':
+    get:
+      summary: 'Display the specified resource.'
+      operationId: displayTheSpecifiedResource
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 1
+                  name: 'Mr. Norbert Treutel'
+                  email: soledad54@example.com
+                  email_verified_at: '2023-10-25T15:23:13.000000Z'
+                  created_at: '2023-10-25T15:23:13.000000Z'
+                  updated_at: '2023-10-25T15:23:13.000000Z'
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    example: 'Mr. Norbert Treutel'
+                  email:
+                    type: string
+                    example: soledad54@example.com
+                  email_verified_at:
+                    type: string
+                    example: '2023-10-25T15:23:13.000000Z'
+                  created_at:
+                    type: string
+                    example: '2023-10-25T15:23:13.000000Z'
+                  updated_at:
+                    type: string
+                    example: '2023-10-25T15:23:13.000000Z'
+      tags:
+        - 'User Management'
+      security: []
+    patch:
+      summary: 'Update the specified resource in storage.'
+      operationId: updateTheSpecifiedResourceInStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Management'
+      security: []
+    delete:
+      summary: 'Remove the specified resource from storage.'
+      operationId: removeTheSpecifiedResourceFromStorage
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - 'User Management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: User
+        description: ''
+        example: 1
+        required: true
+        schema:
+          type: integer
+tags:
+  -
+    name: 'Comment Management'
+    description: 'API To Manage Comments'
+  -
+    name: 'Post Management'
+    description: ' API to Manage Users'
+  -
+    name: 'User Management'
+    description: ' API to Manage Users'
