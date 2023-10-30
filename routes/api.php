@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Route;
 
 // Route::apiResource('/users', UserController::class);
 
-Route::prefix('v1')->group(
+Route::middleware('auth:sanctum')-> prefix('v1')->group(
 function(){
     $v1FolderPath = base_path('routes/api/v1');
 $v1Files = glob($v1FolderPath . '/*.php');

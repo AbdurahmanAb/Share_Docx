@@ -9,6 +9,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Markdown;
 use Illuminate\Support\Facades\DB;
 
 
@@ -61,6 +62,7 @@ return $created;
     return new PostResource($result);
         //
 
+    
     }
 
     /**
