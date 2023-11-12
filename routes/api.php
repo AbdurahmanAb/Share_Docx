@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 // Route::get('/users', [UserController::class, 'index']);
 // Route::get('/user/{id}', function (User $id) {
-//     return  $id; 
+//     return  $id;
 //  });
 
 //  Route::post('/user', function() {
