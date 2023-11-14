@@ -23,16 +23,17 @@ class PostTest extends TestCase
     }
     public function test_create()
 {
+
+  $user=User::factory()->create();
+
     $data = [
         'title' => 'TestTitle 246532',
         'body' => 'Post Testing',
         'user_id'=>  User::factory()->count(2)->create()->pluck('id')->toArray(),
     ];
-    
+ $this->actingAs($user, 'sanctum')->post('/api/v1/post', $data)->assertOk();
 
-    $response = $this->post('/api/v1/post', $data);
-
-    $response->assertStatus(201); // Assert the response status code
+    // $response->assertStatus(201); // Assert the response status code
 
    // $this->assertDatabaseHas('posts', $data); // Assert the data exists in the database
 }

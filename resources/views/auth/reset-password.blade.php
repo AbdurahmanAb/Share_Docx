@@ -13,7 +13,7 @@
     <form method="POST" action="{{ route('password.update') }}">
 
         <input type="email" name="email" placeholder="Email">
-        <input type="hidden" name="token" value={{ $token }}>
+        <input type="hidden" name="token" value="">
         <input type="password" name="password" placeholder="Password">
         <input type="password" name="password_confirmation" placeholder="confirm password">
         <input type="submit" value="Change">

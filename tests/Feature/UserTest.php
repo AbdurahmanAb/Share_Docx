@@ -15,18 +15,22 @@ class UserTest extends TestCase
      */
     public function test_example(): void
     {
+
         $response = $this->get('/');
 
         $response->assertStatus(200);
     }
     public function test_create()
     {
+
+        Sanctum::actingAs(User::factory()->create());
+
         $data = [
             "name" => "abdu",
-            "email" => "abdurahman@gmail.com",
-            "password" => "156486564"
+            "email" => "abdufff@gmail.com",
+            "password" => "12345678"
         ];
-        $response = $this->post('api/v1/user', $data);
+        $response = $this->json('post','api/v1/user', $data);
         $response->assertStatus(200);
     }
     public function test_update()

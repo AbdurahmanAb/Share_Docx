@@ -169,7 +169,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        FortifyServiceProvider::class
+    FortifyServiceProvider::class
        // App\Providers\GeolocationProvider::class,
     ])->toArray(),
 

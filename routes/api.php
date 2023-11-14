@@ -59,7 +59,6 @@ $v1Files = glob($v1FolderPath . '/*.php');
 }
 );
 
-
 // Route::prefix('v1')->group(
 //     function () {
 //         require __DIR__ . '/api/v1/user.php';

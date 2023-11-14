@@ -31,20 +31,46 @@
                 method: 'POST',
 
                 body: JSON.stringify({
-                    "email": "hasan2242@gmail.com",
-                    "password": "123456789"
+                    "email": "abd4@gmail.com",
+                    "password": "12345678"
                 })
             })
         }
         fetch('/sanctum/csrf-cookie', {
-            headers: {
-                'content-type': 'application/json',
-                'accept': 'application/json'
-            },
-            creddentials: 'include'
-        }).then(() => {
-            login();
-        })
+    headers: {
+        'content-type': 'application/json',
+        'accept': 'application/json'
+    },
+    credentials: 'include'
+})
+.then(() => {
+    login();
+})
+.then(() => {
+    const cookie = getCookie('XSRF-TOKEN');
+    return fetch('/api/v1/user', {
+        headers: {
+            'content-type': 'application/json',
+            'accept': 'application/json',
+            'X-XSRF-TOKEN': decodeURIComponent(cookie),
+        },
+        credentials: 'include',
+        method: 'GET'
+    });
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    return response.json();
+})
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('There was an error!', error);
+});
+
     </script>
 </body>
 
