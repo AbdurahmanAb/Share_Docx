@@ -24,14 +24,14 @@ class PostTest extends TestCase
     public function test_create()
 {
 
-  $user=User::factory()->create();
+  
 
     $data = [
         'title' => 'TestTitle 246532',
         'body' => 'Post Testing',
         'user_id'=>  User::factory()->count(2)->create()->pluck('id')->toArray(),
     ];
- $this->actingAs($user, 'sanctum')->post('/api/v1/post', $data)->assertOk();
+ $this->post('/api/v1/post', $data)->assertOk();
 
     // $response->assertStatus(201); // Assert the response status code
 

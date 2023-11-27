@@ -33,6 +33,21 @@ Route::get('/', function () {
 Route::get('/app', function () {
   return view('app');
 });
+ Route::get('/tr', function(){
+  return view('tr');
+ }
+);
+
+Route::get('/change/{lang}', function ($lang) {
+
+    if (! in_array($lang, ['en', 'ar', 'fr'])) {
+        abort(400);
+    }
+App::setLocale($lang);
+echo __('welcome');
+
+});
+
 Route::get(RoutePath::for('password.reset', '/reset-password/{token}'), function ($token) {
   return view('auth.reset-password', [
     'token' => $token

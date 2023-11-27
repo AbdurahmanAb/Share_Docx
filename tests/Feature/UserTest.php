@@ -10,6 +10,7 @@ use App\Models\User;
 class UserTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * A basic feature test example.
      */
@@ -25,12 +26,13 @@ class UserTest extends TestCase
 
         Sanctum::actingAs(User::factory()->create());
 
+
         $data = [
             "name" => "abdu",
             "email" => "abdufff@gmail.com",
             "password" => "12345678"
         ];
-        $response = $this->json('post','api/v1/user', $data);
+        $response = $this->post('api/v1/user', $data);
         $response->assertStatus(200);
     }
     public function test_update()
