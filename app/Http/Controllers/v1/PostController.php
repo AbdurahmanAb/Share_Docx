@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\PostResource;
-use App\Models\Comment;
+
 use App\Models\Post;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -24,6 +24,7 @@ use PharIo\Manifest\Url;
 
 class PostController extends Controller
 {
+
 
 
     /**

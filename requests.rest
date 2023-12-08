@@ -1,0 +1,13 @@
+# Host
+https://dev.to/api
+
+## curl options
+--silent
+
+# Headers
+Accept: application/json;
+Connection: keep-alive
+Content-Type: application/json; charset=utf-8
+
+# Method
+GET /articles

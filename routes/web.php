@@ -48,6 +48,11 @@ echo __('welcome');
 
 });
 
+Route::get('/chat', function(){
+event(new App\Events\ChatEvent());
+ return "event";
+});
+
 Route::get(RoutePath::for('password.reset', '/reset-password/{token}'), function ($token) {
   return view('auth.reset-password', [
     'token' => $token
